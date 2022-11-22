@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundimage"
+    tools:context=".QuestionFragment">
+
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="1. 1992-93. Which club finished third in the inaugural Premier League season with a negative goal difference?"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_answer1"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:background="@color/default_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_answer2"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="48dp"
+            android:background="@color/default_button"
+            android:layout_marginEnd="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_answer3"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:background="@color/default_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_answer4"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:background="@color/default_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
