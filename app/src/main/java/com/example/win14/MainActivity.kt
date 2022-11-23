@@ -11,6 +11,7 @@ import com.example.win14.model.FirstListModel
 import com.example.win14.model.FirstQuestions
 import com.example.win14.room.AppDatabase
 import com.example.win14.service.QuizApi
+import com.onesignal.OneSignal
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,6 +29,9 @@ class MainActivity : FragmentActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
+        OneSignal.initWithContext(this)
+        OneSignal.setAppId("714b9f14-381d-4fc4-a93c-28d480557381")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         appDatabase = AppDatabase.getDatabase(this)
@@ -41,7 +45,7 @@ class MainActivity : FragmentActivity() {
             val data = response.getFistList().awaitResponse()
             if (data.isSuccessful){
                 questionsList=data.body()!!.firstListQuestions
-                Log.i("LIST", data.body()!!.firstListQuestions.toString())
+                Log.i("LIST", data.body()!!.firstListQuestions.size.toString())
                 launch(Dispatchers.Main){
                     for (i in questionsList){
                         appDatabase.questionsDao().insert(i)
@@ -49,6 +53,12 @@ class MainActivity : FragmentActivity() {
                     adapter = QuizAdapter(this@MainActivity, questionsList)
                     viewPager = binding.viewPager
                     viewPager.adapter = adapter
+                    binding.imageViewArrowRight.setOnClickListener {
+                        viewPager.currentItem = viewPager.currentItem+1
+                    }
+                    binding.imageViewArrowLeft.setOnClickListener {
+                        viewPager.currentItem = viewPager.currentItem-1
+                    }
                 }
             }
         }

@@ -1,6 +1,5 @@
 package com.example.win14
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -37,52 +36,13 @@ class QuestionFragment : Fragment() {
         }?.apply {
             position = getInt("position")
         }
+        Log.i("position", position.toString())
         appDatabase = AppDatabase.getDatabase(requireContext())
         CoroutineScope(Dispatchers.IO).launch{
             questionsList.addAll(appDatabase.questionsDao().getAll())
             launch(Dispatchers.Main){
-                Log.i("FINAL", questionsList.toString())
-                binding.textViewTitle.text = questionsList[position].question
-                binding.buttonAnswer1.text = questionsList[position].answer1.name
-                binding.buttonAnswer2.text = questionsList[position].answer2.name
-                binding.buttonAnswer3.text = questionsList[position].answer3.name
-                binding.buttonAnswer4.text = questionsList[position].answer4.name
-                binding.buttonAnswer1.setOnClickListener {
-                    if (questionsList[position].answer1.trueorfalse=="true"){
-                        binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.green_button))
-                        setButtons(position+1)
-                        setButtonDefaultColor()
-                    } else {
-                        binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.red_button))
-                    }
-                }
-                binding.buttonAnswer2.setOnClickListener {
-                    if (questionsList[position].answer2.trueorfalse=="true"){
-                        binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.green_button))
-                        setButtons(position+1)
-                        setButtonDefaultColor()
-                    } else {
-                        binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.red_button))
-                    }
-                }
-                binding.buttonAnswer3.setOnClickListener {
-                    if (questionsList[position+1].answer3.trueorfalse=="true"){
-                        binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.green_button))
-                        setButtons(position+1)
-                        setButtonDefaultColor()
-                    } else {
-                        binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.red_button))
-                    }
-                }
-                binding.buttonAnswer4.setOnClickListener {
-                    if (questionsList[position+1].answer4.trueorfalse=="true"){
-                        binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.green_button))
-                        setButtons(position+1)
-                        setButtonDefaultColor()
-                    } else {
-                        binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.red_button))
-                    }
-                }
+                setButtons(position)
+                onClickButton(position)
             }
         }
     }
@@ -94,10 +54,67 @@ class QuestionFragment : Fragment() {
         binding.buttonAnswer3.text = questionsList[position].answer3.name
         binding.buttonAnswer4.text = questionsList[position].answer4.name
     }
-    private fun setButtonDefaultColor(){
-        binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.default_button))
-        binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.default_button))
-        binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.default_button))
-        binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.default_button))
+    private fun onClickButton(position: Int){
+        binding.textViewTitle.text = questionsList[position].question
+        binding.buttonAnswer1.text = questionsList[position].answer1.name
+        binding.buttonAnswer2.text = questionsList[position].answer2.name
+        binding.buttonAnswer3.text = questionsList[position].answer3.name
+        binding.buttonAnswer4.text = questionsList[position].answer4.name
+        binding.buttonAnswer1.setOnClickListener {
+            if (questionsList[position].answer1.trueorfalse=="true"){
+                binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.green_button))
+                setButtonDefaultColor("button1")
+            } else {
+                binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.red_button))
+            }
+        }
+        binding.buttonAnswer2.setOnClickListener {
+            if (questionsList[position].answer2.trueorfalse=="true"){
+                binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.green_button))
+                setButtonDefaultColor("button2")
+            } else {
+                binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.red_button))
+            }
+        }
+        binding.buttonAnswer3.setOnClickListener {
+            if (questionsList[position].answer3.trueorfalse=="true"){
+                binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.green_button))
+                setButtonDefaultColor("button3")
+            } else {
+                binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.red_button))
+            }
+        }
+        binding.buttonAnswer4.setOnClickListener {
+            if (questionsList[position].answer4.trueorfalse=="true"){
+                binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.green_button))
+                setButtonDefaultColor("button4")
+            } else {
+                binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.red_button))
+            }
+        }
+    }
+    private fun setButtonDefaultColor(button: String) {
+        when (button) {
+            "button1" -> {
+                binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.default_button))
+            }
+            "button2" -> {
+                binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.default_button))
+            }
+            "button3" -> {
+                binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer4.setBackgroundColor(requireContext().getColor(R.color.default_button))
+            }
+            "button4" -> {
+                binding.buttonAnswer1.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer2.setBackgroundColor(requireContext().getColor(R.color.default_button))
+                binding.buttonAnswer3.setBackgroundColor(requireContext().getColor(R.color.default_button))
+            }
+        }
     }
 }

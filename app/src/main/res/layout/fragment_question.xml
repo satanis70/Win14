@@ -24,49 +24,52 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView_title">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_answer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginEnd="48dp"
             android:background="@color/default_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_answer2"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="48dp"
-            android:background="@color/default_button"
-            android:layout_marginEnd="48dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="48dp"
+            android:background="@color/default_button"
             android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_answer3"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
-            android:background="@color/default_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="48dp"
+            android:background="@color/default_button"
             android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_answer4"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
-            android:background="@color/default_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="48dp"
+            android:background="@color/default_button"
             android:text="Aston Villa"></androidx.appcompat.widget.AppCompatButton>
     </TableLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

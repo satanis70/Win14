@@ -1,13 +1,11 @@
 package com.example.win14.adapter
 
 import android.os.Bundle
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.win14.QuestionFragment
 import com.example.win14.model.FirstQuestions
-import com.example.win14.room.AppDatabase
 
 class QuizAdapter(fragmentActivity: FragmentActivity, val list: List<FirstQuestions>): FragmentStateAdapter(fragmentActivity) {
 
